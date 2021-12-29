@@ -14,7 +14,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) =>  MainScreen(),
+        '/': (context) => MainScreen(),
         '/mail': (context) => MailScreen(),
         '/profile': (context) => ProfileScreen(),
       },
@@ -47,23 +47,56 @@ Widget navDrawer(context) => Drawer(
           ListTile(
             leading: Icon(Icons.home),
             title: Text('Главный экран'),
-            onTap: () {Navigator.pushNamed(context, '/');},
+            onTap: () {
+              Navigator.pushNamed(context, '/');
+            },
           ),
           Divider(),
           ListTile(
             leading: Icon(Icons.mail),
             title: Text('Почта'),
-            onTap: () {Navigator.pushNamed(context, '/mail');},
+            onTap: () {
+              Navigator.pushNamed(context, '/mail');
+            },
           ),
           Divider(),
           ListTile(
             leading: Icon(Icons.person),
             title: Text('Профиль'),
-            onTap: () {Navigator.pushNamed(context, '/profile');},
+            onTap: () {
+              Navigator.pushNamed(context, '/profile');
+            },
           ),
           Divider(),
         ],
       ),
+    );
+
+Widget bottomNavBar(context) => BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      items: [
+        BottomNavigationBarItem(
+            icon: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/');
+                },
+                icon: Icon(Icons.home)),
+            label: 'Главный экран'),
+        BottomNavigationBarItem(
+            icon: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/mail');
+                },
+                icon: Icon(Icons.mail)),
+            label: 'Почта'),
+        BottomNavigationBarItem(
+            icon: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/profile');
+                },
+                icon: Icon(Icons.person)),
+            label: 'Профиль'),
+      ],
     );
 
 class MainScreen extends StatefulWidget {
@@ -87,25 +120,28 @@ class _MainScreenState extends State<MainScreen> {
             style: TextStyle(fontSize: 16),
           ),
           actions: <Widget>[
-            IconButton(onPressed: () {Navigator.pushNamed(context, '/');}, icon: Icon(Icons.home)),
             IconButton(
-                tooltip: 'Почта', onPressed: () {Navigator.pushNamed(context, '/mail');}, icon: Icon(Icons.mail)),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/');
+                },
+                icon: Icon(Icons.home)),
+            IconButton(
+                tooltip: 'Почта',
+                onPressed: () {
+                  Navigator.pushNamed(context, '/mail');
+                },
+                icon: Icon(Icons.mail)),
             TextButton(
-              onPressed: () {Navigator.pushNamed(context, '/profile');},
+              onPressed: () {
+                Navigator.pushNamed(context, '/profile');
+              },
               child: Text('Профиль'),
               style: buttonStyle,
             )
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home), label: 'Главный экран'),
-            BottomNavigationBarItem(icon: Icon(Icons.mail), label: 'Почта'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Профиль'),
-          ],
-        ),
+        drawer: navDrawer(context),
+        bottomNavigationBar: bottomNavBar(context),
       ),
     );
   }
@@ -132,25 +168,28 @@ class _MailScreenState extends State<MailScreen> {
             style: TextStyle(fontSize: 16),
           ),
           actions: <Widget>[
-            IconButton(onPressed: () {Navigator.pushNamed(context, '/');}, icon: Icon(Icons.home)),
             IconButton(
-                tooltip: 'Почта', onPressed: () {Navigator.pushNamed(context, '/mail');}, icon: Icon(Icons.mail)),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/');
+                },
+                icon: Icon(Icons.home)),
+            IconButton(
+                tooltip: 'Почта',
+                onPressed: () {
+                  Navigator.pushNamed(context, '/mail');
+                },
+                icon: Icon(Icons.mail)),
             TextButton(
-              onPressed: () {Navigator.pushNamed(context, '/profile');},
+              onPressed: () {
+                Navigator.pushNamed(context, '/profile');
+              },
               child: Text('Профиль'),
               style: buttonStyle,
             )
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home), label: 'Главный экран'),
-            BottomNavigationBarItem(icon: Icon(Icons.mail), label: 'Почта'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Профиль'),
-          ],
-        ),
+        drawer: navDrawer(context),
+        bottomNavigationBar: bottomNavBar(context),
       ),
     );
   }
@@ -177,25 +216,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
             style: TextStyle(fontSize: 16),
           ),
           actions: <Widget>[
-            IconButton(onPressed: () {Navigator.pushNamed(context, '/');}, icon: Icon(Icons.home)),
             IconButton(
-                tooltip: 'Почта', onPressed: () {Navigator.pushNamed(context, '/mail');}, icon: Icon(Icons.mail)),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/');
+                },
+                icon: Icon(Icons.home)),
+            IconButton(
+                tooltip: 'Почта',
+                onPressed: () {
+                  Navigator.pushNamed(context, '/mail');
+                },
+                icon: Icon(Icons.mail)),
             TextButton(
-              onPressed: () {Navigator.pushNamed(context, '/profile');},
+              onPressed: () {
+                Navigator.pushNamed(context, '/profile');
+              },
               child: Text('Профиль'),
               style: buttonStyle,
             )
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home), label: 'Главный экран'),
-            BottomNavigationBarItem(icon: Icon(Icons.mail), label: 'Почта'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Профиль'),
-          ],
-        ),
+        drawer: navDrawer(context),
+        bottomNavigationBar: bottomNavBar(context),
       ),
     );
   }
